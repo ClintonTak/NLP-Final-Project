@@ -13,13 +13,13 @@ tag_vectors = [eval(line) for line in tag_file.readlines()]
 one_hot_vectors = [eval(line) for line in one_hot_file.readlines()]
 states = [vector.index(1) for vector in one_hot_vectors]
 
-split = len(one_hot_vectors) // 2
+split = len(one_hot_vectors) // 10
 print(split)
 
 
 def training_data():
-    return tag_vectors[:split], states[:split]
+    return tag_vectors[split:], states[split:]
 
 
 def testing_data():
-    return tag_vectors[split:], states[split:]
+    return tag_vectors[:split], states[:split]

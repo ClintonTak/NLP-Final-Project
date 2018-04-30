@@ -1,5 +1,5 @@
 # title          : dnn.py
-# description    : Deep Neural Network in TFLearn
+# description    : Convolutional Neural Network in TFLearn
 # author         : Becker, Brett, Tak, and Rawlinson
 # date           : Thursday, 26 April 2018.
 # python version : 3.6.5
