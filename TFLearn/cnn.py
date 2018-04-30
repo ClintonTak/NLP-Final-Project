@@ -20,8 +20,9 @@ testX, testY = read_data.testing_data()
 
 # Data preprocessing
 # Sequence padding
-trainX = pad_sequences(trainX, maxlen=None, value=0.)
-testX = pad_sequences(testX, maxlen=None, value=0.)
+length = max(len(max(trainX, key=len)), len(max(testX, key=len)))
+trainX = pad_sequences(trainX, maxlen=length, value=0.)
+testX = pad_sequences(testX, maxlen=length, value=0.)
 # Converting labels to binary vectors
 """
 As far as can tell, nb_classes is the number of possible values our
@@ -32,7 +33,7 @@ trainY = to_categorical(trainY, nb_classes=6)
 testY = to_categorical(testY, nb_classes=6)
 
 # Network building
-net = tflearn.input_data([None, 1035])
+net = tflearn.input_data([None, length])
 net = tflearn.embedding(net, input_dim=10000, output_dim=128)
 net = tflearn.lstm(net, 128, dropout=0.8)
 # Same thing here as with nb_classes, need to change to 6
