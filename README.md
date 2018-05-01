@@ -10,23 +10,6 @@ Collaborators:
 
 Using data from the CAES institute, we want to make a [native language inference/identification](https://en.wikipedia.org/wiki/Native-language_identification) system that classifies a persons native language based on how they write a second language. We are using data from a Spanish Language test, with participants that spoke Chinese, Portuguese, Russian, French, English, and Arabic. 
 
-## Metadata and Associated Information of the Essays
-
-**General Information About Essays**
-| -------------------------------------|--------|
-| Number of Respondents                | 3878   | 
-| Number of Essays                     | 3878   |  
-| Total Number of POS Tags             | 682172 |
-|Average Number of POS tags (per essay)| 175.9  |
-
-**Average Number of POS Tags by Language**
-| Language| Total Responses| Average Number of POS Tags |
-| --------|:--------------:| --------------------------:|
-| Arabic  | 1342           | 148.3                      |
-| Chinese | 373            | 169.3                      |
-| English | 615            | 204.7                      |
-| French  | 371            | 189.5                      |
-| Russian | 176            | 140.9                      |
 
 ## Challenges 
 
