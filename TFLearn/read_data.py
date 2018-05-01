@@ -26,7 +26,8 @@ for i in range(len(tag_vectors)):
     tag_vectors[i].append(states[i])
 
 # Exclude longer, outlier essays
-tag_vectors = [vector for vector in tag_vectors if len(vector) < 501]
+tag_vectors = [vector for vector in tag_vectors if (len(vector) < 501 and
+                                                    len(vector) >= 25)]
 
 # Shuffle data so we have more random samples
 shuffle(tag_vectors)
