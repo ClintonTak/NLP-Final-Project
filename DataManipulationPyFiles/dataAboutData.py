@@ -46,9 +46,9 @@ print("Languages of respondents: " + re.sub(r'\\n|{|}', ' ', languagesString))
 print("Total part of speech tags: " + str(totalPOSTags))
 print("Average number of part of speech tags per essay: " +str(totalPOSTags/len(posTags)))
 print("Number of responses by first language: " +
-	"\n\t Arabic: \t{} \n\t Chinese: \t{} \n\t English: \t{} \n\t French: \t{} \n\t Russian: \t{}"
+	"\n\t Arabic: \t{} \n\t Chinese: \t{} \n\t English: \t{} \n\t French: \t{} \n\t Russian: \t{} \n\t Portuguese: \t{}"
 	.format(len(arabicPOSCount), len(chinesePOSCount), len(englishPOSCount),len(frenchPOSCount),len(russianPOSCount), len(portuguesePOSCount)))
 print("Average number of POS tags in each essay by first language: " +
-	"\n\t Arabic: \t{} \n\t Chinese: \t{} \n\t English: \t{} \n\t French: \t{} \n\t Russian: \t{}"
+	"\n\t Arabic: \t{} \n\t Chinese: \t{} \n\t English: \t{} \n\t French: \t{} \n\t Russian: \t{} \n\t Portuguese: \t{}"
 	.format(sum(arabicPOSCount)/len(arabicPOSCount), sum(chinesePOSCount)/len(chinesePOSCount), 
 		sum(englishPOSCount)/len(englishPOSCount), sum(frenchPOSCount)/len(frenchPOSCount), sum(russianPOSCount)/len(russianPOSCount), sum(portuguesePOSCount)/len(portuguesePOSCount)))
