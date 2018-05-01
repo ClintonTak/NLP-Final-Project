@@ -27,6 +27,6 @@ This work is based on research from a few shared tasks. Here are links to furthe
 
 * [A Report on the First Native Language Identification Shared Task](http://www.aclweb.org/anthology/W13-1706)
 
-* [Feature Analysis for Native Language Identification] (http://nlp.unibuc.ro/papers/nisioi15a.pdf) 
+* [Feature Analysis for Native Language Identification](http://nlp.unibuc.ro/papers/nisioi15a.pdf) 
 
   ​
