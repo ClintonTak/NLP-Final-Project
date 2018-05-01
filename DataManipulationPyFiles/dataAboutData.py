@@ -20,6 +20,7 @@ chinesePOSCount = []
 englishPOSCount = []
 frenchPOSCount = []
 russianPOSCount = []
+portuguesePOSCount = []
 for j in range(0, len(individualLanguages)):
 	if "Arabic" in individualLanguages[j]:
 		arabicPOSCount.append(len(eval(intPOSTags[j])))
@@ -31,6 +32,9 @@ for j in range(0, len(individualLanguages)):
 		frenchPOSCount.append(len(eval(intPOSTags[j])))
 	if "Russian" in individualLanguages[j]:
 		russianPOSCount.append(len(eval(intPOSTags[j])))
+	if "Portuguese" in individualLanguages[j]:
+		portuguesePOSCount.append(len(eval(intPOSTags[j])))
+		
 languagesString = str(set(individualLanguages))
 
 
@@ -43,8 +47,8 @@ print("Total part of speech tags: " + str(totalPOSTags))
 print("Average number of part of speech tags per essay: " +str(totalPOSTags/len(posTags)))
 print("Number of responses by first language: " +
 	"\n\t Arabic: \t{} \n\t Chinese: \t{} \n\t English: \t{} \n\t French: \t{} \n\t Russian: \t{}"
-	.format(len(arabicPOSCount), len(chinesePOSCount), len(englishPOSCount),len(frenchPOSCount),len(russianPOSCount)))
+	.format(len(arabicPOSCount), len(chinesePOSCount), len(englishPOSCount),len(frenchPOSCount),len(russianPOSCount), len(portuguesePOSCount)))
 print("Average number of POS tags in each essay by first language: " +
 	"\n\t Arabic: \t{} \n\t Chinese: \t{} \n\t English: \t{} \n\t French: \t{} \n\t Russian: \t{}"
 	.format(sum(arabicPOSCount)/len(arabicPOSCount), sum(chinesePOSCount)/len(chinesePOSCount), 
-		sum(englishPOSCount)/len(englishPOSCount), sum(frenchPOSCount)/len(frenchPOSCount), sum(russianPOSCount)/len(russianPOSCount)))
+		sum(englishPOSCount)/len(englishPOSCount), sum(frenchPOSCount)/len(frenchPOSCount), sum(russianPOSCount)/len(russianPOSCount), sum(portuguesePOSCount)/len(portuguesePOSCount)))
