@@ -46,7 +46,7 @@ One application of NLI is its use in forensic linguistics. With the rise of Russ
 
 ## Formal Report 
 
-A PDF file containing all relevant background and findings from this project (along with associated literature reviews can be found within the [reportDocs folder](https://github.com/ClintonTak/NLP-Final-Projects/tree/master/reportDocs). 
+A PDF file containing all relevant background and findings from this project (along with associated literature reviews) can be found within the [reportDocs folder](https://github.com/ClintonTak/NLP-Final-Projects/tree/master/reportDocs). 
 
 ## Other work
 
