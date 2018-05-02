@@ -44,6 +44,10 @@ Unfortunately, the data that we have is not very rich. We are working with essay
 
 One application of NLI is its use in forensic linguistics. With the rise of Russian troll farms, being able to accurately determine which texts were written by native language speakers versus which texts were written by native Russian speakers would turn the tide of misinformation and propaganda that has flooded the internet. In addition, a number of intelligence agencies have started to [fund NLI projects](https://research.aston.ac.uk/portal/en/theses/linguistic-identifiers-of-l1-persian-speakers-writing-in-english(4e21bce7-f3af-47ec-8101-971a9f20b436).html) in the hopes that it will give them more information about potential threats and who are responsible for them. NLI also has applications as it pertains to pedagogical (teaching) materials. By identifying L1-specific features, we can improve language transfer and author profiling.
 
+## Formal Report 
+
+A PDF file containing all relevant background and findings from this project (along with associated literature reviews can be found within the [reportDocs folder](https://github.com/ClintonTak/NLP-Final-Projects/tree/master/reportDocs). 
+
 ## Other work
 
 This work is based on research from a few shared tasks. Here are links to further reading:
