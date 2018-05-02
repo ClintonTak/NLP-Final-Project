@@ -40,8 +40,9 @@ for arg in args:
         optimizer = arg[4:]
 
 
+file_header = 'cnn_' + optimizer
 # Specify log file
-logfile = 'cnn' + '_' + optimizer + '.txt'
+logfile = 'Logs/' + file_header + '.txt'
 
 
 trainX, trainY = read_data.training_data()
@@ -96,6 +97,8 @@ def train(net):
               validation_set=(testX, testY),
               show_metric=True,
               batch_size=32)
+
+    model.save('Models/' + file_header + '/' + file_header + '.tfl')
 
 
 if gpu_mode:

@@ -38,8 +38,11 @@ for arg in args:
         optimizer = arg[4:]
 
 
+file_header = 'rnn_' + optimizer
+if dynamic:
+    file_header = file_header + '_dynamic'
 # Specify log file
-logfile = 'cnn' + '_' + optimizer + '.txt'
+logfile = 'Logs/' + file_header + '.txt'
 
 
 """
@@ -88,6 +91,8 @@ def train(net):
               show_metric=True,
               batch_size=32,
               snapshot_step=None)
+
+    model.save('Models/' + file_header + '/' + file_header + '.tfl')
 
 
 if gpu_mode:
