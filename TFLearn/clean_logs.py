@@ -15,6 +15,7 @@ def parse(filename):
     for i in range(len(log_file)):
         if 'val_loss' in log_file[i]:
             line = log_file[i-2] + log_file[i]
+            line = line.replace("[1m[32m", '').replace('[0m[0m', '')
             lines.append(line.strip())
 
     sys.stdout = open(filename, 'w')
