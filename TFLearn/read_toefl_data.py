@@ -1,24 +1,20 @@
-# title          : read_data.py
+# title          : read_toefl_data.py
 # description    : Read in vectors from text files
 # author         : Becker, Brett, Tak, and Rawlinson
-# date           : Thursday, 26 April 2018.
+# date           : Thursday,  3 May 2018.
 # python version : 3.6.5
 # ==================================================
-
 from random import shuffle
 import matplotlib.pyplot as plt
 
 # Load the data from our vector files
-tag_file = open('../Data/vectorTags.txt')
-one_hot_file = open('../Data/EnglishLangOutVectors.txt')
+tag_file = open('../Data/TOEFL/POSvectorTags.txt')
+lang_file = open('../Data/TOEFL/transformed_language_of_respondents.txt')
 
 
 # Convert to lists we can use
 tag_vectors = [eval(line) for line in tag_file.readlines()]
-one_hot_vectors = [eval(line) for line in one_hot_file.readlines()]
-
-# Translate one-hot vectors to integers for tensorflow
-states = [vector.index(1) for vector in one_hot_vectors]
+states = eval(lang_file.readlines()[0])
 
 
 # Connect the data so our tags and states don't get mixed up
@@ -26,10 +22,10 @@ for i in range(len(tag_vectors)):
     tag_vectors[i].append(states[i])
 
 
-max_len = 500
+max_len = 600
 # Exclude longer, outlier essays
 tag_vectors = [v for v in tag_vectors if (len(v) < max_len+1 and
-                                          len(v) >= 25)]
+                                          len(v) >= 100)]
 
 all_tags = []
 for vector in tag_vectors:
@@ -69,3 +65,6 @@ def length_distribution():
 
     plt.bar(dic.keys(), dic.values(), 1.0)
     plt.show()
+
+
+# length_distribution()

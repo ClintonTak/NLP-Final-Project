@@ -1,14 +1,14 @@
-# title          : cnn_ngram.py
-# description    : Convolutional Neural Network in TFLearn for n-grams
+# title          : cnn.py
+# description    : Convolutional Neural Network in TFLearn
 # author         : Becker, Brett, Tak, and Rawlinson
-# date           : Wednesday,  2 May 2018.
-# python_version : 3.6.4
+# date           : Tuesday,  1 May 2018.
+# python version : 3.6.5
 # ==================================================
 
 from __future__ import division, print_function, absolute_import
 import sys
 import clean_logs
-import ngram_data
+import read_toefl_data
 
 import tensorflow as tf
 import tflearn
@@ -40,30 +40,29 @@ for arg in args:
         optimizer = arg[4:]
 
 
-file_header = 'cnn_' + optimizer + '_ngram'
+file_header = 'cnn_toefl_' + optimizer
 # Specify log file
 logfile = 'Logs/' + file_header + '.txt'
 
 
-trainX, trainY = ngram_data.training_data()
-testX, testY = ngram_data.testing_data()
+trainX, trainY = read_toefl_data.training_data()
+testX, testY = read_toefl_data.testing_data()
 
 # Data preprocessing
 # Sequence padding
-length = ngram_data.max_len
-
+length = read_toefl_data.max_len
 trainX = pad_sequences(trainX, maxlen=length, value=0.)
 testX = pad_sequences(testX, maxlen=length, value=0.)
 # Converting labels to binary vectors
-trainY = to_categorical(trainY, nb_classes=6)
-testY = to_categorical(testY, nb_classes=6)
+trainY = to_categorical(trainY, nb_classes=11)
+testY = to_categorical(testY, nb_classes=11)
 
 
 # Building convolutional network
 def build_network(optimizer):
     net = input_data(shape=[None, length], name='input')
     net = tflearn.embedding(net,
-                            input_dim=ngram_data.dims,
+                            input_dim=read_toefl_data.dims,
                             output_dim=128)
     branch1 = conv_1d(net, 128, 3,
                       padding='valid',
@@ -81,12 +80,13 @@ def build_network(optimizer):
     net = tf.expand_dims(net, 2)
     net = global_max_pool(net)
     net = dropout(net, 0.25)
-    net = fully_connected(net, 6, activation='softmax')
+    net = fully_connected(net, 11, activation='softmax')
     net = regression(net,
                      optimizer=optimizer,
                      learning_rate=0.001,
                      loss='categorical_crossentropy',
                      name='target')
+
     return net
 
 

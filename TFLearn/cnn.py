@@ -50,7 +50,7 @@ testX, testY = read_data.testing_data()
 
 # Data preprocessing
 # Sequence padding
-length = 500
+length = read_data.max_len
 trainX = pad_sequences(trainX, maxlen=length, value=0.)
 testX = pad_sequences(testX, maxlen=length, value=0.)
 # Converting labels to binary vectors

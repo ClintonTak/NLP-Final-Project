@@ -13,22 +13,26 @@ import matplotlib.pyplot as plt
 def make_ngrams(vector_file):
     tag_vectors = [eval(line) for line in open(vector_file).readlines()]
 
+    all_grams = []
     n_grams = []
     for vector in tag_vectors:
-        grams = ngrams(vector, 3, pad_right=True)
-        grams = [str(gram) for gram in grams]
+        grams = ngrams(vector, 3, pad_right=False)
+        # grams = [str(gram) for gram in grams]
+        grams = list(sum(grams, ()))
+        all_grams.extend(grams)
         n_grams.append(grams)
 
-    # n_grams = [[list(gram) for gram in vector] for vector in n_grams]
+    return n_grams, max(all_grams) + 1
 
-    # return n_grams
-
+    '''
+    # Convert individual n-grams to ints
     all_grams = list(set([j for i in n_grams for j in i]))
     all_grams = {all_grams[i]: i for i in range(len(all_grams))}
 
     n_grams = [[all_grams[g] for g in vector] for vector in n_grams]
 
     return n_grams, len(all_grams)
+    '''
 
 
 def save_ngrams_to_file(n_grams, file_name):
@@ -45,6 +49,7 @@ filename = '../Data/vectorTags.txt'
 
 n_grams, dims = make_ngrams(filename)
 
+
 one_hot_file = open('../Data/EnglishLangOutVectors.txt')
 one_hot_vectors = [eval(line) for line in one_hot_file.readlines()]
 
@@ -56,7 +61,8 @@ for i in range(len(n_grams)):
     n_grams[i].append(states[i])
 
 # Exclude longer, outlier essays
-n_grams = [vector for vector in n_grams if (len(vector) < 501 and
+max_len = 1000
+n_grams = [vector for vector in n_grams if (len(vector) < max_len+1 and
                                             len(vector) >= 25)]
 
 # Shuffle data so we have more random samples
