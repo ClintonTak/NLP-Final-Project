@@ -34,7 +34,7 @@
  \subsection{Data Corpus}
  \tab As mentioned in the introduction, our group utilized a corpus of essays from the CAES institute\footnote{URL: http://www.cervantes.es/default.htm}. These essays were annotated and converted into a set of language POS tags for all individuals in the database. All essays are written in Spanish. 
  \subsection{Metadata and Associated Information}
- \tab Data regarding the number of essays, languages and POS tags are outlined below in \textbf{Figure 1.}
+ \tab Data regarding the number of essays, languages and POS tags are outlined below:
  \begin{center}
  	\begin{tabular}{|c|c|}
  		\hline
@@ -46,14 +46,33 @@
 		English, Russian\\
 		  & Portuguese, Chinese\\
 			\hline
-		Total Numbrr of POS tags & 682172\\
+		Total Unique POS tags & 682172\\
 			\hline
 		Average Number of POS tags (per essay) & 175.9\\
 			\hline
  	\end{tabular}\\
  	\textbf{Figure 1. Table With Basic Essay Information (CAES Institute)}
+ 	
+ 	 \begin{center}
+ 	 	\begin{tabular}{|c|c|}
+ 	 		\hline
+ 	 		Number of Respondents & 12100\\
+ 	 		\hline
+ 	 		Number of Essay Samples & 12100\\
+ 	 		\hline
+ 	 		Native Languages & German, Turkish, French, Arabic\\
+ 	 		& Korean, Chinese, Hindi, Spanish \\
+ 	 		& Italian, Japanese, Telugu\\
+ 	 		\hline
+ 	 		Total Unique POS tags & 26\\
+ 	 		\hline
+ 	 		Average Number of POS tags (per essay) & 341.9\\
+ 	 		\hline
+ 	 	\end{tabular}\\
+ 	 	\textbf{Figure 2. Table With Basic Essay Information (TOEFL)}
+ 	 \end{center}
  \end{center}
-While the above figure contains basic information about the POS tags contained within each of the essays, our group also set out to learn more about the average number of POS tags for each native language. The results can be found below in \textbf{Figure 2.}
+While the above figure contains basic information about the POS tags contained within each of the essays, our group also set out to learn more about the average number of POS tags for each native language. 
  \begin{center}
  	\begin{tabular}{|c|c|c|}
  		\hline
@@ -72,8 +91,39 @@ While the above figure contains basic information about the POS tags contained w
  		Portuguese & 1001 & 198.8\\
  		\hline
  	\end{tabular}
- 	\textbf{Figure 2. Metadata By Native Language (CAES Institute)}
+ 	\textbf{Figure 3. Metadata By Native Language (CAES Institute)}
  \end{center}
+ 
+  \begin{center}
+  	\begin{tabular}{|c|c|c|}
+  		\hline
+  		\textbf{Language} & \textbf{Total Responses} & \textbf{Average Number of POS Tags}\\
+  		\hline
+  		German & 1100 & 369.1\\
+  		\hline
+  		Turkish & 1100 & 344.7\\
+  		\hline
+  		French & 1100 & 348.7\\
+  		\hline
+  		Arabic & 1100& 304.3\\
+  		\hline
+  		Korean & 1100& 331.3\\
+  		\hline
+  		Chinese & 1100 & 356.1\\
+  		\hline
+  		Hindi & 1100& 376.8\\
+  		\hline
+  		Spanish & 1100 & 354.0\\
+  		\hline
+  		Italian & 1100 & 316.9\\
+  		\hline
+  		Japanese & 1100 & 306.3\\
+  		\hline
+  		Telugu & 1100 & 353.6\\
+  		\hline
+  	\end{tabular}
+  	\textbf{Figure 4. Metadata By Native Language (TOEFL)}
+  \end{center}
 
  \subsection{Preprocessing Methodology}
  \tab Most of the pre-processing that our team needed to complete for this experiment required turning POS tags into vectors that our CNN/RNNs could accept. These steps are outlined\\
@@ -81,12 +131,12 @@ While the above figure contains basic information about the POS tags contained w
  1.) All distinct POS tags were scraped from the essays, put into a set, and then written to a file (done for both CAES and TOEFL).\\
  2.) Each essays was then converted into a vector with each POS tag replaced by its index number from the first file.\\
  3.) One hot vectors were then created for each of the languages. For each of the essays, depending on the native language a  one-hot vector was assigned to that essay (there were six different one hot vectors in CAES and 11 in TOEFL).\\
- 4.) Finally, to exclude outliers (i.e. incredibly short or long essays), essay vectors were limited by their size. For both the CAES and TOEFL vectors, this was anything bigger than 25 and smaller than 500. Graphs of the essay length distribution (before limiting length size) can be found below in \textbf{Figure 3} and \textbf{Figure 4.}
+ 4.) Finally, to exclude outliers (i.e. incredibly short or long essays), essay vectors were limited by their size. For both the CAES and TOEFL vectors, this was anything bigger than 25 and smaller than 500. Graphs of the essay length distribution (before limiting length size) can be found below in \textbf{Figure 5} and \textbf{Figure 6.}
  \begin{center}
  	\includegraphics[scale=0.8]{lengthD}\\
- 	\textbf{Figure 3. Essay Length Distribution (CAES)}
+ 	\textbf{Figure 5. Essay Length Distribution (CAES)}
  	\includegraphics[scale=0.4]{Figure1}\\
- 	\textbf{Figure 4. Essay Length Distribution (TOEFL)}
+ 	\textbf{Figure 6. Essay Length Distribution (TOEFL)}
  \end{center}
 
  \section{Methods}
@@ -123,12 +173,12 @@ More information on optimizers is outlined in the following section:
 \subsection{Data Partitioning}
 As mentioned earlier, for the CAES dataset 90\% of the essays were devoted towards training, whereas 10\% were held in reserve. It should be noted that the 90\% and 10\% were selected at random by shuffling the entire dataset with the random library in python. The TOEFL dataset was partitioned in the same way.
 \subsection{Accuracy \& Loss}
-Please \textbf{Figure 5} and \textbf{Figure 6} below for accuracy and loss function results. These are determined by classifier/optimizer and by epochs completed. Note that our group was using a random baseline of 16.6\% for the CAES data (6 languages total, so 1/6 chance of guessing correctly) and 9.99\% baseline for the TOEFL tags (11 languages total, 1/11 chance of guessing correctly). \\
+Please \textbf{Figure 7} and \textbf{Figure 8} below for accuracy and loss function results. These are determined by classifier/optimizer and by epochs completed. Note that our group was using a random baseline of 16.6\% for the CAES data (6 languages total, so 1/6 chance of guessing correctly) and 9.99\% baseline for the TOEFL tags (11 languages total, 1/11 chance of guessing correctly). \\
 \begin{center}
-	\includegraphics[scale=0.8]{val_acc}\\
-	\textbf{Figure 5. Classifier Accuracy}
-	\includegraphics[scale=0.8]{total_loss}
-	\textbf{Figure 6. Loss Function by Classifier}
+	\includegraphics[scale=0.74]{val_acc}\\
+	\textbf{Figure 7. Classifier Accuracy}
+	\includegraphics[scale=0.74]{total_loss}\\
+	\textbf{Figure 8. Loss Function by Classifier}
 \end{center}
 \tab As we can see from the above graphs, all the classifiers have nearly the same accuracy (hovering around 50\% by the time they hit the 100th epoch). Surprisingly, two of the CNNs were among the most accurate classifiers. Specifically, the CNN with ``adamn" optimizer and trigrams had the highest accuracy, peaking around 53\% and stabilizing around 46\%. The CNN with RMS propogation also performed well (around 45\%). Amongst the RNNs, the RNN just utilizing the ``adam" optimizer performed well, ending a around 46\%. Note that from the loss function graph, the CNN with ``adamn" optimizer and trigrams had the lowest loss, totaling around 0.8. However, the RNN with ``adam" and trigrams was also around this value too. Our classifiers in all instances beat our random baseline, which is encouraging. However, not a single one was able to correctly guess the native language (consistently) more than 50\% of the time. This could be improved upon. \textbf{NOTE: Results regarding the classifier accuracy on the TOEFL dataset will be included in the final draft.}
 \section{Conclusions \& Future Work}
