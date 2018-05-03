@@ -2,7 +2,7 @@
 # @Author: Clinton Tak, Lauren Becker, Isaiah Rawlinson, Daniel Brett
 # @Date:   2018-05-01 14:00:35
 # @Last Modified by:   Clinton Tak
-# @Last Modified time: 2018-05-02 21:36:21
+# @Last Modified time: 2018-05-02 22:26:44
 import re 
 import numpy as np 
 
@@ -63,7 +63,6 @@ print("Essays collected: " + str(len(POSTags)))
 print("Languages collected: " + str(len(Languages)))
 print("Number of unique Part of Speech Tags: " + str(len(uniqueTags)))
 print("Languages surveyed: " + re.sub(r'\\n|{|}', ' ', languagesString))
-print("Number of Unique Part of Speech Tags: " + str(len(set(POSTags))))
 
 print("Number of responses by first language: " +
 	"\n\t German: \t{} \n\t Turkish: \t{} \n\t French: \t{} \n\t Arabic: \t{} \n\t Korean: \t{} \n\t Chinese: \t{}\n\t Hindi: \t{} \n\t Spanish: \t{} \n\t Italian: \t{} \n\t Japanese: \t{} \n\t Telugu: \t{}"
@@ -73,8 +72,9 @@ print("Average number of POS tags in each essay by first language: " +
 	.format(sum(germanPOSCount)/len(germanPOSCount), sum(turkishPOSCount)/len(turkishPOSCount), sum(frenchPOSCount)/len(frenchPOSCount),sum(arabicPOSCount)/len(arabicPOSCount),
 		sum(koreanPOSCount)/len(koreanPOSCount), sum(chinesePOSCount)/len(chinesePOSCount), sum(hindiPOSCount)/len(hindiPOSCount), sum(spanishPOSCount)/len(spanishPOSCount), sum(italianPOSCount)/len(italianPOSCount), sum(japanesePOSCount)/len(japanesePOSCount),
 		sum(teluguPOSCount)/ len(teluguPOSCount)))
-allArrays = germanPOSCount + turkishPOSCount +frenchPOSCount +arabicPOSCount +koreanPOSCount +chinesePOSCount +hindiPOSCount +spanishPOSCount +italianPOSCount +japanesePOSCount + teluguPOSCount 
 
+allArrays = germanPOSCount + turkishPOSCount +frenchPOSCount +arabicPOSCount +koreanPOSCount +chinesePOSCount +hindiPOSCount +spanishPOSCount +italianPOSCount +japanesePOSCount + teluguPOSCount 
+print("Average length of essay: " +str(sum(allArrays)/len(allArrays)))
 h = sorted(allArrays)
 fit = stats.norm.pdf(h, np.mean(h), np.std(h), )
 pl.plot(h, fit, '-o', color = "orange")
