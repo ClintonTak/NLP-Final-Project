@@ -34,7 +34,7 @@ for vector in tag_vectors:
     for tag in vector:
         all_tags.append(tag)
 
-dims = list(set(all_tags))
+dims = max(list(set(all_tags))) + 1
 
 
 # Shuffle data so we have more random samples
