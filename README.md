@@ -8,7 +8,7 @@ Collaborators:
 
 ## Project Scope and Goals
 
-Using data from the CAES institute, we want to make a [native language inference/identification](https://en.wikipedia.org/wiki/Native-language_identification) system that classifies a persons native language based on how they write a second language. We are using data from a Spanish Language test, with participants that spoke Chinese, Portuguese, Russian, French, English, and Arabic. We then use data from the COEFL which contains a larger corpus of essays (written in english) with a wider diversity of native speakers. These languages include German, Turkish, French, Arabic, Korean, Chinese, Hindi, Spanish, Italian, Japanese, and Telugu. Information about each of these is outlined in the following sections. 
+Using data from the CAES institute, we want to make a [native language inference/identification](https://en.wikipedia.org/wiki/Native-language_identification) system that classifies a persons native language based on how they write a second language. We are using data from a Spanish Language test, with participants that spoke Chinese, Portuguese, Russian, French, English, and Arabic. We then use data from the TOEFL which contains a larger corpus of essays (written in english) with a wider diversity of native speakers. These languages include German, Turkish, French, Arabic, Korean, Chinese, Hindi, Spanish, Italian, Japanese, and Telugu. Information about each of these is outlined in the following sections. 
 
 ## Metadata and Associated Information
 
