@@ -61,7 +61,9 @@ testY = to_categorical(testY, nb_classes=6)
 # Building convolutional network
 def build_network(optimizer):
     net = input_data(shape=[None, length], name='input')
-    net = tflearn.embedding(net, input_dim=10000, output_dim=128)
+    net = tflearn.embedding(net,
+                            input_dim=read_data.dims,
+                            output_dim=128)
     branch1 = conv_1d(net, 128, 3,
                       padding='valid',
                       activation='relu',

@@ -6,31 +6,22 @@
 # python_version : 3.x
 # ==================================================
 
-import numpy as np
-import tensorflow as tf
-from random import shuffle
-from sklearn.feature_extraction.text import CountVectorizer
 
-class vectorize_tags(object):
-	def __init__(self, num):
-		self.num=num
+def vectorize_tags():
+    vector_tags = open("../Data/vectorTags.txt", "w")
+    posFile = open("../Data/tags.txt", "r").readlines()
 
-	def vectorize(self):
-		vector_tags = open("vectorTags.txt", "w")
-		posFile = open("tags.txt", "r")
-		caesList = [open('CaesTags.txt').read().split()]
-		cList = caesList[0]
-		#POS = open('tags.txt').read().split()
-		for line in posFile:
-			addList=[]
-			for item in line:
-				if item in cList:
-					addList.append(cList.index(item))
-			vector_tags.write(str(addList))
-			vector_tags.write("\n")
-			
-				
+    all_tags = []
+    for line in posFile:
+            for tag in line.split():
+                    all_tags.append(tag)
+
+    all_tags = list(set(all_tags))
+    all_tags = {all_tags[i]: i for i in range(len(all_tags))}
+
+    for line in posFile:
+            line = [all_tags[tag] for tag in line.split()]
+            vector_tags.write(str(line) + '\n')
 
 
-someTags = vectorize_tags(1)
-someTags.vectorize()
+vectorize_tags()

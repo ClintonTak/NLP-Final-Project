@@ -28,7 +28,7 @@ def make_ngrams(vector_file):
 
     n_grams = [[all_grams[g] for g in vector] for vector in n_grams]
 
-    return n_grams
+    return n_grams, len(all_grams)
 
 
 def save_ngrams_to_file(n_grams, file_name):
@@ -43,7 +43,7 @@ def save_ngrams_to_file(n_grams, file_name):
 filename = '../Data/vectorTags.txt'
 
 
-n_grams = make_ngrams(filename)
+n_grams, dims = make_ngrams(filename)
 
 one_hot_file = open('../Data/EnglishLangOutVectors.txt')
 one_hot_vectors = [eval(line) for line in one_hot_file.readlines()]

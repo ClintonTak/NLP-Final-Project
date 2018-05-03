@@ -29,6 +29,14 @@ for i in range(len(tag_vectors)):
 tag_vectors = [vector for vector in tag_vectors if (len(vector) < 501 and
                                                     len(vector) >= 25)]
 
+all_tags = []
+for vector in tag_vectors:
+    for tag in vector:
+        all_tags.append(tag)
+
+dims = list(set(all_tags))
+
+
 # Shuffle data so we have more random samples
 shuffle(tag_vectors)
 

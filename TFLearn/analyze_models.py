@@ -62,6 +62,3 @@ logs, metrics = read_logs('Logs')
 
 for metric in metrics:
     plot_metric(logs, metric)
-# plot_metric(logs, 'val_loss')
-# plot_metric(logs, 'total_loss')
-# plot_metric(logs, 'acc')
