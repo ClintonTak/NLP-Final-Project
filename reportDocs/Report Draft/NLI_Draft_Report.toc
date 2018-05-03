@@ -1,0 +1,18 @@
+\contentsline {section}{\numberline {1}Introduction}{3}
+\contentsline {section}{\numberline {2}Background: Literature Review}{4}
+\contentsline {subsection}{\numberline {2.1}Feature Analysis for Native Language Identification}{4}
+\contentsline {subsection}{\numberline {2.2}Native Language Identification Shared Task}{4}
+\contentsline {subsection}{\numberline {2.3}Native Language Identification: SVMs vs. NNs}{5}
+\contentsline {section}{\numberline {3}Data}{6}
+\contentsline {subsection}{\numberline {3.1}Data Corpus}{6}
+\contentsline {subsection}{\numberline {3.2}Metadata and Associated Information}{6}
+\contentsline {subsection}{\numberline {3.3}Preprocessing Methodology}{7}
+\contentsline {section}{\numberline {4}Methods}{9}
+\contentsline {subsection}{\numberline {4.1}Tools, Libraries, and Software}{9}
+\contentsline {subsection}{\numberline {4.2}External Resources}{9}
+\contentsline {subsection}{\numberline {4.3}Experiments}{9}
+\contentsline {section}{\numberline {5}Results}{11}
+\contentsline {subsection}{\numberline {5.1}Data Partitioning}{11}
+\contentsline {subsection}{\numberline {5.2}Accuracy \& Loss}{11}
+\contentsline {section}{\numberline {6}Conclusions \& Future Work}{14}
+\contentsline {section}{References}{14}
