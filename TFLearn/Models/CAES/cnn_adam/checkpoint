@@ -1,2 +1,2 @@
-model_checkpoint_path: "/Users/isaiahrawlinson/Projects/NLP-Final-Projects/TFLearn/Models/CAES/cnn_adam/cnn_adam.tfl"
-all_model_checkpoint_paths: "/Users/isaiahrawlinson/Projects/NLP-Final-Projects/TFLearn/Models/CAES/cnn_adam/cnn_adam.tfl"
+model_checkpoint_path: "C:\\Users\\Isaiah\\Projects\\NLP-Final-Projects\\TFLearn\\Models\\CAES\\cnn_adam\\cnn_adam.tfl"
+all_model_checkpoint_paths: "C:\\Users\\Isaiah\\Projects\\NLP-Final-Projects\\TFLearn\\Models\\CAES\\cnn_adam\\cnn_adam.tfl"

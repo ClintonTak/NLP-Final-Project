@@ -108,7 +108,7 @@ def train(net):
 
 def build_model():
     if gpu_mode:
-        tflearn.init_graph(num_cores=4, gpu_memory_fraction=0.75)
+        tflearn.init_graph(num_cores=4, gpu_memory_fraction=0.5)
         with tf.device('/device:GPU:0'):
             net = build_network(optimizer)
             # Redirect logs to a file
@@ -139,9 +139,9 @@ labels = [t.argmax() for t in testY]
 
 conf_mat = tf.confusion_matrix(labels, predictions)
 
-with tf.Session():
-    conf_mat = tf.Tensor.eval(conf_mat, feed_dict=None, session=None)
-    print('Confusion Matrix: \n\n', conf_mat)
+with tf.Session(config=tf.ConfigProto(allow_soft_placement=True)):
+    print('Confusion Matrix: \n\n',
+          tf.Tensor.eval(conf_mat, feed_dict=None, session=None))
     sys.stdout = open(conf_mat_file, 'w')
-    print(conf_mat)
+    print(tf.Tensor.eval(conf_mat, feed_dict=None, session=None))
     sys.stdout = sys.__stdout__

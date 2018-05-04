@@ -132,7 +132,7 @@ labels = [t.argmax() for t in testY]
 
 conf_mat = tf.confusion_matrix(labels, predictions)
 
-with tf.Session():
+with tf.Session(config=tf.ConfigProto(allow_soft_placement=True)):
     conf_mat = tf.Tensor.eval(conf_mat, feed_dict=None, session=None)
     print('Confusion Matrix: \n\n', conf_mat)
     sys.stdout = open(conf_mat_file, 'w')
