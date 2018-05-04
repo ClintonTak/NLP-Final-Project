@@ -58,7 +58,12 @@ def plot_metric(logs, metric):
     plt.show()
 
 
-logs, metrics = read_logs('Logs')
+def analyze(path):
+    logs, metrics = read_logs(path)
 
-for metric in metrics:
-    plot_metric(logs, metric)
+    for metric in metrics:
+        plot_metric(logs, metric)
+
+
+analyze('Logs/CAES')
+analyze('Logs/TOEFL')

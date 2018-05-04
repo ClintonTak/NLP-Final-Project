@@ -1,0 +1,2 @@
+model_checkpoint_path: "/Users/isaiahrawlinson/Projects/NLP-Final-Projects/TFLearn/Models/CAES/cnn_adam_ngram/cnn_adam_ngram.tfl"
+all_model_checkpoint_paths: "/Users/isaiahrawlinson/Projects/NLP-Final-Projects/TFLearn/Models/CAES/cnn_adam_ngram/cnn_adam_ngram.tfl"

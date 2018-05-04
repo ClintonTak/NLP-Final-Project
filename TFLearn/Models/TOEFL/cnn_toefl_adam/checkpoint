@@ -1,0 +1,2 @@
+model_checkpoint_path: "/Users/isaiahrawlinson/Projects/NLP-Final-Projects/TFLearn/Models/TOEFL/cnn_toefl_adam/cnn_toefl_adam.tfl"
+all_model_checkpoint_paths: "/Users/isaiahrawlinson/Projects/NLP-Final-Projects/TFLearn/Models/TOEFL/cnn_toefl_adam/cnn_toefl_adam.tfl"
