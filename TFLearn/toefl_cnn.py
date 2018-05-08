@@ -40,7 +40,7 @@ for arg in args:
         optimizer = arg[4:]
 
 
-file_header = 'cnn_toefl_' + optimizer
+file_header = 'toefl_cnn_' + optimizer
 # Specify log file
 logfile = 'Logs/TOEFL/' + file_header + '.txt'
 conf_mat_file = 'ConfusionMatrices/TOEFL/' + file_header + '.txt'

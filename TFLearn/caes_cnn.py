@@ -40,7 +40,7 @@ for arg in args:
         optimizer = arg[4:]
 
 
-file_header = 'cnn_' + optimizer
+file_header = 'caes_cnn_' + optimizer
 # Specify log file
 logfile = 'Logs/CAES/' + file_header + '.txt'
 conf_mat_file = 'ConfusionMatrices/CAES/' + file_header + '.txt'

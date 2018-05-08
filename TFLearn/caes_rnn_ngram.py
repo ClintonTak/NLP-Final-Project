@@ -38,7 +38,7 @@ for arg in args:
         optimizer = arg[4:]
 
 
-file_header = 'rnn_' + optimizer + '_ngram'
+file_header = 'caes_rnn_' + optimizer + '_ngram'
 if dynamic:
     file_header = file_header + '_dynamic'
 # Specify log file

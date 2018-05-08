@@ -16,7 +16,6 @@ lang_file = open('../Data/TOEFL/transformed_language_of_respondents.txt')
 tag_vectors = [eval(line) for line in tag_file.readlines()]
 states = eval(lang_file.readlines()[0])
 
-
 # Connect the data so our tags and states don't get mixed up
 for i in range(len(tag_vectors)):
     tag_vectors[i].append(states[i])
@@ -64,6 +63,8 @@ def length_distribution():
             dic[i] = 1
 
     plt.bar(dic.keys(), dic.values(), 1.0)
+    plt.xlabel('Number of Responses')
+    plt.ylabel('Length of Response')
     plt.show()
 
 

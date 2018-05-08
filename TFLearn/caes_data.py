@@ -68,4 +68,9 @@ def length_distribution():
             dic[i] = 1
 
     plt.bar(dic.keys(), dic.values(), 1.0)
+    plt.xlabel('Number of Responses')
+    plt.ylabel('Length of Response')
     plt.show()
+
+
+# length_distribution()

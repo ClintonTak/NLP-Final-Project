@@ -1,8 +1,8 @@
-# title          : caes_ngram_data.py
-# description    : Make n-grams of CAES data set
+# title          : toefl_ngram_data.py
+# description    : Make n-grams of TOEFL data set
 # author         : Becker, Brett, Tak, and Rawlinson
-# date           : Wednesday,  2 May 2018.
-# python_version : 3.6.4
+# date           : Tuesday,  8 May 2018.
+# python version : 3.6.5
 # ==================================================
 
 from nltk import ngrams
@@ -44,26 +44,22 @@ def save_ngrams_to_file(n_grams, file_name):
     ngram_file.close()
 
 
-filename = '../Data/vectorTags.txt'
+tag_file = '../Data/TOEFL/POSvectorTags.txt'
+lang_file = open('../Data/TOEFL/transformed_language_of_respondents.txt')
 
 
-n_grams, dims = make_ngrams(filename)
+n_grams, dims = make_ngrams(tag_file)
+states = eval(lang_file.readlines()[0])
 
-
-one_hot_file = open('../Data/EnglishLangOutVectors.txt')
-one_hot_vectors = [eval(line) for line in one_hot_file.readlines()]
-
-# Translate one-hot vectors to integers for tensorflow
-states = [vector.index(1) for vector in one_hot_vectors]
 
 # Connect the data so our tags and states don't get mixed up
 for i in range(len(n_grams)):
     n_grams[i].append(states[i])
 
 # Exclude longer, outlier essays
-max_len = 1000
+max_len = 1700
 n_grams = [vector for vector in n_grams if (len(vector) < max_len+1 and
-                                            len(vector) >= 25)]
+                                            len(vector) >= 300)]
 
 # Shuffle data so we have more random samples
 shuffle(n_grams)
@@ -95,3 +91,6 @@ def length_distribution():
 
     plt.bar(dic.keys(), dic.values(), 1.0)
     plt.show()
+
+
+length_distribution()
