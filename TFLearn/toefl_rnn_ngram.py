@@ -1,25 +1,22 @@
-# title          : caes_cnn_ngram.py
-# description    : CNN in TFLearn for n-grams on CAES data set
+# title          : toefl_rnn_ngram.py
+# description    : Convolutional Neural Network in TFLearn for n-grams
 # author         : Becker, Brett, Tak, and Rawlinson
-# date           : Wednesday,  2 May 2018.
-# python_version : 3.6.4
+# date           : Wednesday,  9 May 2018.
+# python version : 3.6.5
 # ==================================================
 
 from __future__ import division, print_function, absolute_import
 import sys
 import clean_logs
-import caes_ngram_data
+import toefl_ngram_data
 
 import tensorflow as tf
 import tflearn
-from tflearn.layers.core import input_data, dropout, fully_connected
-from tflearn.layers.conv import conv_1d, global_max_pool
-from tflearn.layers.merge_ops import merge
-from tflearn.layers.estimator import regression
 from tflearn.data_utils import to_categorical, pad_sequences
 
 from datetime import datetime
 startTime = datetime.now()
+
 
 """
 Set up command line arguments:
@@ -31,6 +28,7 @@ Set up command line arguments:
 args = sys.argv[1:]
 gpu_mode = '-gpu' in args
 mac_os = '-mac' in args
+dynamic = '-d' in args
 epochs = 5
 optimizer = 'adam'
 for arg in args:
@@ -40,53 +38,47 @@ for arg in args:
         optimizer = arg[4:]
 
 
-file_header = 'caes_cnn_' + optimizer + '_ngram'
+file_header = 'toefl_rnn_' + optimizer + '_ngram'
+if dynamic:
+    file_header = file_header + '_dynamic'
 # Specify log file
-logfile = 'Logs/CAES/' + file_header + '.txt'
-conf_mat_file = 'ConfusionMatrices/CAES/' + file_header + '.txt'
+logfile = 'Logs/TOEFL/' + file_header + '.txt'
+conf_mat_file = 'ConfusionMatrices/TOEFL/' + file_header + '.txt'
 
-trainX, trainY = caes_ngram_data.training_data()
-testX, testY = caes_ngram_data.testing_data()
+
+"""
+TF in this example expects (list, int) pairs so I changed the one-hot
+vectors (to ints 0 - 5) when reading the data in
+"""
+trainX, trainY = toefl_ngram_data.training_data()
+testX, testY = toefl_ngram_data.testing_data()
 
 # Data preprocessing
 # Sequence padding
-length = caes_ngram_data.max_len
-
+# length = max(len(max(trainX, key=len)), len(max(testX, key=len)))
+length = toefl_ngram_data.max_len
 trainX = pad_sequences(trainX, maxlen=length, value=0.)
 testX = pad_sequences(testX, maxlen=length, value=0.)
 # Converting labels to binary vectors
-trainY = to_categorical(trainY, nb_classes=6)
-testY = to_categorical(testY, nb_classes=6)
+trainY = to_categorical(trainY, nb_classes=toefl_ngram_data.dims)
+testY = to_categorical(testY, nb_classes=toefl_ngram_data.dims)
 
 
-# Building convolutional network
+# Network building
 def build_network(optimizer):
-    net = input_data(shape=[None, length], name='input')
+    net = tflearn.input_data([None, length])
     net = tflearn.embedding(net,
-                            input_dim=caes_ngram_data.dims,
+                            input_dim=toefl_ngram_data.dims,
                             output_dim=128)
-    branch1 = conv_1d(net, 128, 3,
-                      padding='valid',
-                      activation='relu',
-                      regularizer="L2")
-    branch2 = conv_1d(net, 128, 4,
-                      padding='valid',
-                      activation='relu',
-                      regularizer="L2")
-    branch3 = conv_1d(net, 128, 5,
-                      padding='valid',
-                      activation='relu',
-                      regularizer="L2")
-    net = merge([branch1, branch2, branch3], mode='concat', axis=1)
-    net = tf.expand_dims(net, 2)
-    net = global_max_pool(net)
-    net = dropout(net, 0.25)
-    net = fully_connected(net, 6, activation='softmax')
-    net = regression(net,
-                     optimizer=optimizer,
-                     learning_rate=0.001,
-                     loss='categorical_crossentropy',
-                     name='target')
+    net = tflearn.lstm(net, 128, dropout=0.8, dynamic=dynamic)
+    # Same thing here as with nb_classes, need to change to 6
+    net = tflearn.fully_connected(net,
+                                  toefl_ngram_data.dims,
+                                  activation='softmax')
+    net = tflearn.regression(net,
+                             optimizer=optimizer,
+                             learning_rate=0.001,
+                             loss='categorical_crossentropy')
     return net
 
 
@@ -95,12 +87,12 @@ def train(net):
     model = tflearn.DNN(net, tensorboard_verbose=0)
     model.fit(trainX, trainY,
               n_epoch=epochs,
-              shuffle=True,
               validation_set=(testX, testY),
               show_metric=True,
-              batch_size=32)
+              batch_size=32,
+              snapshot_step=None)
 
-    model.save('Models/CAES/' + file_header + '/' + file_header + '.tfl')
+    model.save('Models/TOEFL/' + file_header + '/' + file_header + '.tfl')
     return model
 
 
@@ -137,7 +129,7 @@ labels = [t.argmax() for t in testY]
 
 conf_mat = tf.confusion_matrix(labels, predictions)
 
-with tf.Session(config=tf.ConfigProto(allow_soft_placement=True)):
+with tf.Session():
     conf_mat = tf.Tensor.eval(conf_mat, feed_dict=None, session=None)
     print('Confusion Matrix: \n\n', conf_mat)
     sys.stdout = open(conf_mat_file, 'w')
