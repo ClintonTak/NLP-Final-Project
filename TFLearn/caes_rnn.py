@@ -75,7 +75,7 @@ def build_network(optimizer):
     net = tflearn.embedding(net,
                             input_dim=caes_data.dims,
                             output_dim=128)
-    net = tflearn.lstm(net, 128, dropout=0.8, dynamic=dynamic)
+    net = tflearn.lstm(net, 128, dropout=0.33, dynamic=dynamic)
     # Same thing here as with nb_classes, need to change to 6
     net = tflearn.fully_connected(net, 6, activation='softmax')
     net = tflearn.regression(net,
@@ -92,7 +92,7 @@ def train(net):
               n_epoch=epochs,
               validation_set=(testX, testY),
               show_metric=True,
-              batch_size=32,
+              batch_size=60,
               snapshot_step=None)
 
     model.save('Models/CAES/' + file_header + '/' + file_header + '.tfl')

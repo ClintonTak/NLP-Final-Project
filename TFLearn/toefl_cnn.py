@@ -80,7 +80,7 @@ def build_network(optimizer):
     net = merge([branch1, branch2, branch3], mode='concat', axis=1)
     net = tf.expand_dims(net, 2)
     net = global_max_pool(net)
-    net = dropout(net, 0.25)
+    net = dropout(net, 0.33)
     net = fully_connected(net, 11, activation='softmax')
     net = regression(net,
                      optimizer=optimizer,
@@ -99,7 +99,7 @@ def train(net):
               shuffle=True,
               validation_set=(testX, testY),
               show_metric=True,
-              batch_size=32)
+              batch_size=110)
 
     model.save('Models/TOEFL/' + file_header + '/' + file_header + '.tfl')
     return model

@@ -11,6 +11,7 @@ import matplotlib.pyplot as plt
 
 def read_logs(directory):
     logs = {}
+    model = ''
     for f in os.listdir(directory):
         filename = os.fsdecode(f)
         model = filename.replace('.txt', '')

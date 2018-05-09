@@ -70,7 +70,7 @@ def build_network(optimizer):
     net = tflearn.embedding(net,
                             input_dim=toefl_data.dims,
                             output_dim=128)
-    net = tflearn.lstm(net, 128, dropout=0.8, dynamic=dynamic)
+    net = tflearn.lstm(net, 128, dropout=0.33, dynamic=dynamic)
     # Same thing here as with nb_classes, need to change to 6
     net = tflearn.fully_connected(net,
                                   toefl_data.dims,
@@ -89,7 +89,7 @@ def train(net):
               n_epoch=epochs,
               validation_set=(testX, testY),
               show_metric=True,
-              batch_size=32,
+              batch_size=110,
               snapshot_step=None)
 
     model.save('Models/TOEFL/' + file_header + '/' + file_header + '.tfl')

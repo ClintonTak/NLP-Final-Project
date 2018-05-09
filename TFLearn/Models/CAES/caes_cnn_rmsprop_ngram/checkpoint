@@ -1,0 +1,2 @@
+model_checkpoint_path: "C:\\Users\\Isaiah\\Projects\\NLP-Final-Projects\\TFLearn\\Models\\CAES\\caes_cnn_rmsprop_ngram\\caes_cnn_rmsprop_ngram.tfl"
+all_model_checkpoint_paths: "C:\\Users\\Isaiah\\Projects\\NLP-Final-Projects\\TFLearn\\Models\\CAES\\caes_cnn_rmsprop_ngram\\caes_cnn_rmsprop_ngram.tfl"
