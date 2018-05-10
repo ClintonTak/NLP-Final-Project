@@ -89,4 +89,4 @@ toefl_classes = [
 ]
 
 parse_mats('ConfusionMatrices/CAES', caes_classes)
-# parse_mats('ConfusionMatrices/TOEFL', toefl_classes)
+parse_mats('ConfusionMatrices/TOEFL', toefl_classes)
