@@ -1,0 +1,2 @@
+model_checkpoint_path: "C:\\Users\\Isaiah\\Projects\\NLP-Final-Projects\\TFLearn\\Models\\TOEFL\\toefl_cnn_adam_ngram\\toefl_cnn_adam_ngram.tfl"
+all_model_checkpoint_paths: "C:\\Users\\Isaiah\\Projects\\NLP-Final-Projects\\TFLearn\\Models\\TOEFL\\toefl_cnn_adam_ngram\\toefl_cnn_adam_ngram.tfl"
