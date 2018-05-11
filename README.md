@@ -15,12 +15,12 @@ Using data from the CAES institute, we want to make a [native language inference
 **General Essay Information (CAES)**
 
 
-| Essay Category      | Associated Number       | 
-| ------------- |:-------------:| 
-| Respondents   | 3878 | 
-| Essay Samples | 3878   |  
-| Total POS Tags | 682172     | 
-|Average POS tags per essay | 175.9| 
+| Essay Category      | Associated Number       |
+| ------------- |:-------------:|
+| Respondents   | 3878 |
+| Essay Samples | 3878   |
+| Total POS Tags | 682172     |
+|Average POS tags per essay | 175.9|
 
 **Responses and Tags by Language (CAES)**
 
@@ -28,7 +28,7 @@ Using data from the CAES institute, we want to make a [native language inference
 | Language | Total Essays  | Average POS Tags per Essay|
 | ------------- |:-------------:| :-----:|
 | Arabic  | 1342| 148.3 |
- | Chinese | 373     |   169.2 |
+| Chinese | 373     |   169.2 |
 | English | 615 |   204.7|
 | French  | 371 | 189.5 |
 | Russian | 176 | 140.8|
@@ -46,7 +46,7 @@ One application of NLI is its use in forensic linguistics. With the rise of Russ
 
 ## Formal Report 
 
-A PDF file containing all relevant background and findings from this project (along with associated literature reviews) can be found [here](https://github.com/ClintonTak/NLP-Final-Projects/blob/master/Report%20Draft/NLI_Draft_Report.pdf). 
+A PDF file containing all relevant background and findings from this project (along with associated literature reviews) can be found [here](https://github.com/ClintonTak/NLP-Final-Project/blob/master/Report%20Draft/FinalReport/NLIFinalReport.pdf). 
 
 ## Other work
 
